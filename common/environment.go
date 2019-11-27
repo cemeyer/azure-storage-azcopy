@@ -46,6 +46,7 @@ var VisibleEnvironmentVariables = []EnvironmentVariable{
 	EEnvironmentVariable.ClientSecret(),
 	EEnvironmentVariable.CertificatePassword(),
 	EEnvironmentVariable.AutoTuneToCpu(),
+	EEnvironmentVariable.UserAgentPrefix(),
 }
 
 var EEnvironmentVariable = EnvironmentVariable{}
@@ -192,5 +193,12 @@ func (EnvironmentVariable) DefaultServiceApiVersion() EnvironmentVariable {
 		Name:         "AZCOPY_DEFAULT_SERVICE_API_VERSION",
 		DefaultValue: "2018-03-28",
 		Description:  "Overrides the service API version so that AzCopy could accommodate custom environments such as Azure Stack.",
+	}
+}
+
+func (EnvironmentVariable) UserAgentPrefix() EnvironmentVariable {
+	return EnvironmentVariable{
+		Name:        "AZCOPY_USER_AGENT_PREFIX",
+		Description: "Add a prefix to the default AzCopy User Agent, which is used for telemetry purposes.",
 	}
 }
